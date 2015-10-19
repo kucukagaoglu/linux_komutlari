@@ -1,0 +1,81 @@
+[365 gün ve sonrasında oluşan dosyaları taşır]
+find /sourcedirectory -mtime +365 -exec mv "{}" /destination/directory/ \;
+
+[To find all files modified in the last 24 hours (last full day) in a particular specific directory and its sub-directories]
+find /directory_path -mtime -1 -ls
+
+[Mouse işaretçi hızını değiştirme]
+xinput --set-prop "Wacom Graphire2 4x5 stylus" "Device Accel Constant Deceleration" 3
+
+[cihaz etrafındaki bluetooth cihazları bulur]
+sudo hcitool scan 
+
+[cihaza bağlı seri portları tarar]
+dmesg | grep tty
+
+[masaüstü paylasim]
+server-- tightvncserver
+
+client-- vncviewer 192.168.1.35:5901
+
+[komut satırından mail yollamak]
+
+$ ssmtp kucukagaoglu@gmail.com
+
+From: kucukagaoglu@gmail.com
+Subject: Deneme ssmtp maili
+
+Bakalım gelecek mi?
+
+[Ctrl+D]
+
+[Takılı diskleri görüntüle]
+lsblk
+
+[Taklıl disklerin kullanımlarını göster]
+
+df
+
+
+[Taklılı sd card ların kullanımlarını göster]
+
+df -h | grep sd
+
+
+[phpmyadmin problemi]
+
+
+down vote
+accepted
+OP's answer:
+
+I solved this problem with the following :
+
+cd /usr/share/doc/phpmyadmin/examples
+sudo gunzip create_tables.sql.gz 
+mysql -u root -p < create_tables.sql
+mysql -u root -p -e 'GRANT SELECT, INSERT, DELETE, UPDATE ON phpmyadmin.* TO 'pma'@'localhost' IDENTIFIED BY "pmapassword"'
+Then edited /etc/phpmyadmin/config.inc.php on these lines :
+
+/* Optional: User for advanced features */
+$cfg['Servers'][$i]['controluser'] = 'pma';
+$cfg['Servers'][$i]['controlpass'] = 'pmapassword';
+
+
+[yandex-disk komutları]
+
+yandex-disk start
+
+yandex-disk status
+
+yandex-disk stop 
+
+yandex-disk sync
+
+
+[ssh ile kopyalama]
+
+scp SONSO.py izzet@192.168.1.35://home/izzet/
+
+
+
