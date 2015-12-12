@@ -90,3 +90,14 @@ rm *.lnk
 
 /var/log/apache2/error.log/
 
+
+[<class 'sqlite3.OperationalError'>: unable to open database file hatasının çözümü]
+
+Aha, just stumbled across an article explaining this. Also Django have info on their NewbieMistakes page.
+
+The solution is to make sure the directory containing the database file also has write access allowed to the process.
+
+In my case, running this command fixed the problem:
+
+chown www-data. .
+
